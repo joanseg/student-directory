@@ -15,3 +15,6 @@ puts "Sam Joseph"
 puts "Samantha Harris"
 puts "David Thompson"
 puts "Joan Senent"
+print "Overall, we have "
+print 15
+puts " great members"
