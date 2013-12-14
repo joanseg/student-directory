@@ -1,3 +1,4 @@
+student_count = 15
 # first we print the list of students
 puts "The members list of the Atlas community"
 puts "---------------"
@@ -17,7 +18,4 @@ puts "Samantha Harris"
 puts "David Thompson"
 puts "Joan Senent"
 # finally, we print the total
-print "Overall, we have "
-# it is important that print() doesn´t add new line characters
-print 15
-puts " great members"
+print "Overall, we have #{student_count} great students"
