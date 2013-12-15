@@ -1,29 +1,29 @@
 # let´s put all students into an array
 students = [
-	"Charles de Barros",
-	"Damien Hogan",
-	"Dharmesh Raithatha",
-	"Enrique Comba",
-	"Gavin Cooper",
-	"James Jenkins",
-	"Juan Manuel",
-	"Kurmaran",
-	"Robert Johnson",
-	"Ron Blanco",
-	"Ruben Kostucki",
-	"Sam Joseph",
-	"Samantha Harris",
-	"David Thompson",
-	"Joan Senent",
+	{:name => "Charles de Barros", :cohort => :december},
+	{:name => "Damien Hogan", :cohort => :december},
+	{:name => "Dharmesh Raithatha", :cohort => :december},
+	{:name => "Enrique Comba", :cohort => :december},
+	{:name => "Gavin Cooper", :cohort => :december},
+	{:name => "James Jenkins", :cohort => :december},
+	{:name => "Juan Manuel", :cohort => :december},
+	{:name => "Kurmaran", :cohort => :december},
+	{:name => "Robert Johnson", :cohort => :december},
+	{:name => "Ron Blanco", :cohort => :december},
+	{:name => "Ruben Kostucki", :cohort => :december},
+	{:name => "Sam Joseph", :cohort => :december},
+	{:name => "Samantha Harris", :cohort => :december},
+	{:name => "David Thompson", :cohort => :december},
+	{:name => "Joan Senent", :cohort => :december}
 ]
 def print_header
 	puts "The members of the Atlas Community"
 	puts "___________"
 end
 
-def print(names)
-	names.each do |name|
-		puts name
+def print(students)
+	students.each do |student|
+		puts "#{student[:name]} (#{student[:cohort]})"
 	end
 end
 
