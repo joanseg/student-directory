@@ -27,10 +27,10 @@ end
 
 def print(students)
 	students.each do |student|
-		if student[:name].start_with?("a")
+		if student[:name].length < 4
 			puts "#{student[:count]} #{student[:name]} (#{student[:cohort]})"
 		else
-			puts "no A initital"
+			puts "Name longer than 4 characters"
 		end
 	end
 end
