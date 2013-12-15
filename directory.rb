@@ -13,7 +13,7 @@ def input_students
 		puts "Now we have #{students.length} members"
 		# get another name from the user
 		name = gets.chomp
-		i = i + 1
+		i += 1
 	end
 	# return the array of students
 	students
