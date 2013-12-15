@@ -3,6 +3,8 @@ def input_students
 	puts "To finish, just hit return twice"
 	# create an empty array
 	students = []
+	puts "students class #{students.class}"
+
 	i = 1
 	# get the first name
 	name = gets.chomp
@@ -26,12 +28,11 @@ def print_header
 end
 
 def print(students)
-	students.each do |student|
-		if student[:name].length < 4
-			puts "#{student[:count]} #{student[:name]} (#{student[:cohort]})"
-		else
-			puts "Name longer than 4 characters"
-		end
+	counter = 0
+	while counter <= students.count - 1
+		stu = students[counter]
+		puts "#{stu[:count]} #{stu[:name]} (#{stu[:cohort]})"
+		counter += 1
 	end
 end
 
