@@ -27,7 +27,11 @@ end
 
 def print(students)
 	students.each do |student|
-		puts "#{student[:count]} #{student[:name]} (#{student[:cohort]})"
+		if student[:name].start_with?("a")
+			puts "#{student[:count]} #{student[:name]} (#{student[:cohort]})"
+		else
+			puts "no A initital"
+		end
 	end
 end
 
