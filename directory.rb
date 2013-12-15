@@ -35,7 +35,7 @@ def print(students)
 	counter = 0
 	while counter <= students.count - 1
 		stu = students[counter]
-		puts "#{stu[:count]} #{stu[:name]}, #{stu[:cohort]}, #{stu[:country]}"
+		puts "#{stu[:count]} #{stu[:name].center(7)}, #{stu[:cohort]}, #{stu[:country].center(7)}"
 		counter += 1
 	end
 end
