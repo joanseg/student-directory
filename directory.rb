@@ -9,14 +9,14 @@ def input_students
 
 	puts "Please specify member´s country"
 	country = gets.chomp
-	# while the name is not empty, repeat thi code
-	while !name.empty? do
+	# while the name is not empty, repeat this code
+	while !name.empty? | !country.empty? do
 		# add the student hash to the array
 		students << {:count => i, :name => name, :cohort => :december, :country => country}
 		puts "Now we have #{students.length} members"
 		# get another name from the user
 		puts "Please enter the name of the member"
-		name = gets.chomp
+		name = gets.chomp 
 		puts "Please specify member´s country"
 		country = gets.chomp
 		i += 1
@@ -32,9 +32,12 @@ def print_header
 end
 
 def print(students)
+
 	counter = 0
 	while counter <= students.count - 1
 		stu = students[counter]
+		stu[:name] = stu[:name] == "" ? "default" : stu[:name]
+		stu[:country] = stu[:country] == "" ? "default" : stu[:country]
 		puts "#{stu[:count]} #{stu[:name].center(7)}, #{stu[:cohort]}, #{stu[:country].center(7)}"
 		counter += 1
 	end
@@ -50,5 +53,5 @@ students = input_students
 print_header
 print(students)
 print_footer(students) 
-
+puts students.class
 
