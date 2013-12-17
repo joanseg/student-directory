@@ -44,7 +44,8 @@ def print(students)
 end
 
 def print_footer(names)
-	puts "Overall, we have #{names.length} great members"
+	member = names.length == 1 ? "member" : "members"
+	puts "Overall, we have #{names.length} great #{member}"
 end
 
 # nothing happens until we call the methods
