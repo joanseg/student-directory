@@ -1,8 +1,8 @@
+@students = [] # an empty array accessible to all methods
+
 def input_students
 	puts "Please enter the name of the member"
 	puts "To finish, just hit return three times"
-	# create an empty array
-	students = []
 	i = 1
 	# get the first name
 	name = gets.chomp
@@ -12,8 +12,8 @@ def input_students
 	# while the name is not empty, repeat this code
 	while !name.empty? | !country.empty? do
 		# add the student hash to the array
-		students << {:count => i, :name => name, :cohort => :december, :country => country}
-		puts "Now we have #{students.length} members"
+		@students << {:count => i, :name => name, :cohort => :december, :country => country}
+		puts "Now we have #{@students.length} members"
 		# get another name from the user
 		puts "Please enter the name of the member"
 		name = gets.chomp 
@@ -21,32 +21,37 @@ def input_students
 		country = gets.chomp
 		i += 1
 	end
-	# return the array of students
-	students
+end
+
+def print_menu
+	puts "1. Input the students"
+	puts "2. Show the students"
+	puts "9. Exit" # 9 because we will be adding more items later
+end
+
+def show_students
+	print_header
+	print_students_list
+	print_footer
+end
+
+def process(selection)
+	case selection
+	when "1"
+		input_students
+	when "2"
+		show_students
+	when "9"
+		exit
+	else
+		puts "I don´t know what you mean, try again"
+	end
 end
 
 def interactive_menu
-	students = []
 	loop do
-		# 1. print the menu and ask the users what to do
-		puts "1. Input the students"
-		puts "2. Show the students"
-		puts "9. Exit"
-		# 2. read the input and save it into a variable
-		selection = gets.chomp
-		# 3. do what the user has asked
-		case selection
-		when "1"
-			students = input_students
-		when "2"
-			print_header
-			print(students)
-			print_footer(students)
-		when "9"
-			exit # this will cause the program to terminate
-		else
-			puts "I don´t know what you meant, try again"
-		end
+		print_menu
+		process(gets.chomp)
 	end
 end
 
@@ -55,11 +60,10 @@ def print_header
 	puts "___________"
 end
 
-def print(students)
-
+def print_students_list
 	counter = 0
-	while counter <= students.count - 1
-		stu = students[counter]
+	while counter <= @students.count - 1
+		stu = @students[counter]
 		stu[:name] = stu[:name] == "" ? "default" : stu[:name]
 		stu[:country] = stu[:country] == "" ? "default" : stu[:country]
 		puts "#{stu[:count]} #{stu[:name].center(7)}, #{stu[:cohort]}, #{stu[:country].center(7)}"
@@ -67,9 +71,9 @@ def print(students)
 	end
 end
 
-def print_footer(names)
-	member = names.length == 1 ? "member" : "members"
-	puts "Overall, we have #{names.length} great #{member}"
+def print_footer
+	member = @students.length == 1 ? "member" : "members"
+	puts "Overall, we have #{@students.length} great #{member}"
 end
 
 # nothing happens until we call the methods
