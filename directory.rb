@@ -73,7 +73,7 @@ def print_footer(names)
 end
 
 # nothing happens until we call the methods
-students = interactive_menu
+interactive_menu
 # students = input_students not necessary anymore
 # print_header
 # print(students)
