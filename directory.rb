@@ -61,13 +61,10 @@ def print_header
 end
 
 def print_students_list
-	counter = 0
-	while counter <= @students.count - 1
-		stu = @students[counter]
-		stu[:name] = stu[:name] == "" ? "default" : stu[:name]
-		stu[:country] = stu[:country] == "" ? "default" : stu[:country]
-		puts "#{stu[:count]} #{stu[:name].center(7)}, #{stu[:cohort]}, #{stu[:country].center(7)}"
-		counter += 1
+	@students.each do |student|
+		student[:name] = student[:name] == "" ? "default" : student[:name]
+		student[:country] = student[:country] == "" ? "default" : student[:country]
+		puts "#{student[:count]} #{student[:name].center(7)}, #{student[:cohort]}, #{student[:country].center(7)}"
 	end
 end
 
