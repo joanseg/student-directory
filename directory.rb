@@ -5,10 +5,10 @@ def input_students
 	puts "To finish, just hit return three times"
 	i = 1
 	# get the first name
-	name = gets.chomp
+	name = STDIN.gets.chomp # read user´s input
 
 	puts "Please specify member´s country"
-	country = gets.chomp
+	country = STDIN.gets.chomp
 	# while the name is not empty, repeat this code
 	while !name.empty? | !country.empty? do
 		# add the student hash to the array
@@ -16,9 +16,9 @@ def input_students
 		puts "Now we have #{@students.length} members"
 		# get another name from the user
 		puts "Please enter the name of the member"
-		name = gets.chomp 
+		name = STDIN.gets.chomp 
 		puts "Please specify member´s country"
-		country = gets.chomp
+		country = STDIN.gets.chomp
 		i += 1
 	end
 end
@@ -57,7 +57,7 @@ end
 def interactive_menu
 	loop do
 		print_menu
-		process(gets.chomp)
+		process(STDIN.gets.chomp)
 	end
 end
 
@@ -91,8 +91,8 @@ def save_students
 	file.close
 end
 
-def load_students
-	file = File.open("students.csv", "r")
+def load_students(filename = "students.csv")
+	file = File.open(filename, "r")
 	file.readlines.each do |line|
 		count, name, cohort, country = line.chomp.split(',')
 		@students << {:count => count, :name => name, :cohort => cohort, :country => country}
@@ -100,7 +100,20 @@ def load_students
 	file.close
 end
 
+def try_load_students
+	filename = ARGV.first # first argument from de command line
+	return if filename.nil? # short way to do: if filename.nil? \n return \n end
+	if File.exists?(filename)
+		load_students(filename)
+		puts "Loaded #{@students.length} from #{filename}"
+	else
+		puts "Sorry, #{filename} doesn´t exist."
+		exit
+	end
+end
+
 # nothing happens until we call the methods
+try_load_students
 interactive_menu
 # students = input_students not necessary anymore
 # print_header
