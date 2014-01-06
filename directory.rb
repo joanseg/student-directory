@@ -12,7 +12,7 @@ def input_students
 	# while the name is not empty, repeat this code
 	while !name.empty? | !country.empty? do
 		# add the student hash to the array
-		@students << {:count => i, :name => name, :cohort => :december, :country => country}
+		add_student(i, name, :december, country)
 		puts "Now we have #{@students.length} members"
 		# get another name from the user
 		puts "Please enter the name of the member"
@@ -95,9 +95,13 @@ def load_students(filename = "students.csv")
 	file = File.open(filename, "r")
 	file.readlines.each do |line|
 		count, name, cohort, country = line.chomp.split(',')
-		@students << {:count => count, :name => name, :cohort => cohort, :country => country}
+		add_student(count, name, cohort, country)
 	end
 	file.close
+end
+
+def add_student(count, name, cohort, country)
+	@students << {:count => count, :name => name, :cohort => cohort, :country => country}
 end
 
 def try_load_students
