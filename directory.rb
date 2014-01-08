@@ -1,4 +1,5 @@
 @students = [] # an empty array accessible to all methods
+require "CSV"
 
 def input_students
 	puts "Please enter the name of the member"
@@ -80,24 +81,24 @@ def print_footer
 end
 
 def save_students
-	# open the file for writing
-	file = File.open("students.csv", "w")
-	# iterate over the array of students
-	@students.each do |student|
-		student_data = [student[:count], student[:name], student[:cohort], student[:country]]
-		csv_line = student_data.join(",")
-		file.puts csv_line
-	end
-	file.close
+        # open the file for writing
+        file = File.open("students.csv", "w")
+        # iterate over the array of students
+        @students.each do |student|
+                student_data = [student[:count], student[:name], student[:cohort], student[:country]]
+                csv_line = student_data.join(",")
+                file.puts csv_line
+        end
+        file.close
 end
 
 def load_students(filename = "students.csv")
-	file = File.open(filename, "r")
-	file.readlines.each do |line|
-		count, name, cohort, country = line.chomp.split(',')
-		add_student(count, name, cohort, country)
-	end
-	file.close
+        file = File.open(filename, "r")
+        file.readlines.each do |line|
+                count, name, cohort, country = line.chomp.split(',')
+                add_student(count, name, cohort, country)
+        end
+        file.close
 end
 
 def add_student(count, name, cohort, country)
